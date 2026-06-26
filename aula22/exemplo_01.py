@@ -331,8 +331,18 @@ try:
 
     plt.subplot(3, 2, 5)
     plt.hist(array_roubo_veiculo, bins=100)
-    plt.axvline(media_roubo_veiculo, color='darkblue', linewidth=1)
-    plt.axvline(mediana_roubo_veiculo, color='darkgreen', linewidth=1)
+    plt.axvline(media_roubo_veiculo, color='darkblue', linewidth=1, label='Média')
+    plt.axvline(mediana_roubo_veiculo, color='darkgreen', linewidth=1, label='Mediana')
+    plt.legend() # legendas
+
+    contagens, limites = np.histogram(array_roubo_veiculo, bins=393)
+
+    print('\nFaixas do Histograma')
+
+    for i in range(len(contagens)):
+
+        if contagens[i] > 0:
+            print(f'Faixa {i+1}: 'f'{limites[i]:.0f} até {limites[i+1]}'f'=> {contagens[i]} Municipios')
 
     plt.tight_layout()  # ajusta completamente o layout do gráfico
     plt.show()
